@@ -1,0 +1,21 @@
+Vagrant.configure("2") do |config|
+  # Ubuntu VM
+  config.vm.define "ubuntu22-04" do |node|
+    node.vm.box = "bento/ubuntu-22.04"
+    node.vm.hostname = "ubuntu22-04"
+
+    node.vm.provider "virtualbox" do |vb|
+      vb.name = "ubuntu22-04"
+      vb.memory = "4096"
+      vb.cpus = 2
+    end
+
+    node.vm.network "private_network", ip: "192.168.56.10"
+    
+    # File syncing and provisioning
+    node.vm.synced_folder "~/Projects/project-IaC/ubuntu/files", "/vagrant_data", type: "rsync"
+    
+    # Provisioning with shell script
+    node.vm.provision "shell", path: "provision/ubuntu_conf.sh"
+  end
+end
