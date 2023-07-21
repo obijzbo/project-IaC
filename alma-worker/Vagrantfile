@@ -16,6 +16,6 @@ Vagrant.configure("2") do |config|
     node.vm.synced_folder "~/Projects/project-IaC/alma-worker/files", "/vagrant_data", type: "rsync"
     
     # Provisioning with shell script
-    node.vm.provision "shell", path: "provision/alma_common_conf.sh"
+    node.vm.provision "shell", path: "provision/alma_worker_conf.sh"
   end
 end

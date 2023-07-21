@@ -9,5 +9,5 @@ spec:
     - protocol: TCP
       port: 7000
       targetPort: 7000
-      nodePort: 30200
+      nodePort: 30700
   type: NodePort
